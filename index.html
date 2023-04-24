@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&family=Tilt+Neon&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+        }
+
+        h1 {
+            color: cornflowerblue;
+            font-size: 6vw;
+            font-family: 'Bruno Ace SC', cursive;
+            font-family: 'Tilt Neon', cursive;
+            margin-top: 0.4vh;
+            position: absolute;
+        }
+
+        #pitch {
+            width: 65vw;
+            height: 75vh;
+            background-color: darkgreen;
+            position: absolute;
+            top: 21vh;
+            border: 5px solid white;
+            left: 3vw;
+        }
+
+        #halfwayline {
+            height: 75vh;
+            width: 5px;
+            background-color: white;
+            position: relative;
+            left: 50%;
+        }
+
+        #centcirc {
+            border-radius: 50%;
+            border: 5px solid white;
+            background-color: rgba(245, 222, 179, 0);
+            position: relative;
+            left: calc(50% - 5vw);
+            width: 10vw;
+            height: 10vw;
+            bottom: calc(50% + 5vw);
+        }
+
+        #yardleft {
+            width: 15vw;
+            height: 36vh;
+            border: 5px solid white;
+            background-color: rgba(0, 0, 255, 0);
+            border-left-width: 0;
+            position: absolute;
+            top: calc(50% - 18vh);
+        }
+
+        #yard2left {
+            width: 5vw;
+            height: 12vh;
+            border: 5px solid white;
+            background-color: rgba(0, 0, 255, 0);
+            border-left-width: 0;
+            position: absolute;
+            top: calc(50% - 6vh);
+        }
+
+        #yardright {
+            width: 15vw;
+            height: 36vh;
+            border: 5px solid white;
+            background-color: rgba(0, 0, 255, 0);
+            border-right-width: 0;
+            position: absolute;
+            top: calc(50% - 18vh);
+            right: 0;
+        }
+
+        #yard2right {
+            width: 5vw;
+            height: 12vh;
+            border: 5px solid white;
+            background-color: rgba(0, 0, 255, 0);
+            border-right-width: 0;
+            position: absolute;
+            top: calc(50% - 6vh);
+            right: 0;
+        }
+
+        #ldot {
+            border-radius: 50%;
+            background-color: white;
+            width: 0.5vw;
+            height: 0.5vw;
+            position: absolute;
+            top: 50%;
+            left: 10vw;
+        }
+
+        #cdot {
+            border-radius: 50%;
+            background-color: white;
+            width: 1vw;
+            height: 1vw;
+            position: absolute;
+            top: 50%;
+            left: calc(50% - 0.25vw);
+        }
+
+        #rdot {
+            border-radius: 50%;
+            background-color: white;
+            width: 0.5vw;
+            height: 0.5vw;
+            position: absolute;
+            top: 50%;
+            right: 10vw;
+        }
+
+        #ltoval {
+            border-radius: 50%;
+            width: 20vh;
+            height: 10vh;
+            border: 5px solid white;
+            border-radius: 10vh 10vh 0 0;
+            transform: rotate(90deg);
+            position: absolute;
+            left: calc(15vw - 5vh);
+            top: calc(50% - 5vh);
+        }
+
+        #rtoval {
+            border-radius: 50%;
+            width: 20vh;
+            height: 10vh;
+            border: 5px solid white;
+            border-radius: 10vh 10vh 0 0;
+            transform: rotate(-90deg);
+            position: absolute;
+            right: calc(15vw - 5vh);
+            top: calc(50% - 5vh);
+        }
+
+        #lgoal {
+            width: 2.5vw;
+            height: 6vh;
+            border: 5px solid white;
+            background-color: rgba(0, 0, 255, 0);
+            border-left-width: 0;
+            position: absolute;
+            top: calc(50% - 3vh);
+            transform: rotate(180deg);
+            left: calc(-2.5vw - 5px);
+
+        }
+
+        #rgoal {
+            width: 2.5vw;
+            height: 6vh;
+            border: 5px solid white;
+            background-color: rgba(0, 0, 255, 0);
+            border-left-width: 0;
+            position: absolute;
+            top: calc(50% - 3vh);
+            right: calc(-2.5vw - 5px);
+
+        }
+
+        #ball {
+            border-radius: 50%;
+            width: 3vw;
+            height: 3vw;
+            background-color: white;
+            position: absolute;
+            top: calc(50% - 1.5vw);
+            left: calc(50% - 1.5vw);
+        }
+
+        .dot {
+            width: 1vw;
+            height: 1vw;
+            border-radius: 50%;
+            background-color: black;
+            position: relative;
+        }
+
+        .users {
+            border: 3px solid grey;
+            width: 5vw;
+            height: 5vw;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .user {
+            border-top-left-radius: 50%;
+            border-top-right-radius: 50%;
+            width: 3vw;
+            height: 1.8vw;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            background-color: aqua;
+            bottom: 0.45vh;
+        }
+
+        .uhead {
+            width: 2vw;
+            height: 2vw;
+            border-radius: 50%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            top: -0.5vh;
+            background-color: aqua;
+        }
+
+        #bull {
+            background-color: white;
+            height: 100vh;
+            width: 28vw;
+            position: absolute;
+            right: 0;
+            margin: 0;
+            top: 0;
+
+        }
+
+        li {
+            color: black;
+            font-size: 1.5vw;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        h2 {
+            font-size: 3vw;
+            font-family: 'Poppins', sans-serif;
+            color: black;
+
+        }
+
+        #skippy {
+            position: relative;
+            width: 8vw;
+            height: 3vh;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5vw;
+            text-align: center;
+            left: 20%;
+        }
+
+        #lin {
+            position: absolute;
+            top: 5vh;
+            left: 50%;
+            width: 15vw;
+            border: 3px solid white;
+            height: 12vh;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Man City</h1>
+
+    <div id="pitch">
+
+        <div id="halfwayline"></div>
+        <div id="centcirc"></div>
+        <div id="yardleft"></div>
+        <div id="yard2left"></div>
+        <div id="yardright"></div>
+        <div id="yard2right"></div>
+        <div id="ldot"></div>
+        <div id="cdot"></div>
+        <div id="rdot"></div>
+        <div id="ltoval"></div>
+        <div id="rtoval"></div>
+        <div id="lgoal"></div>
+        <div id="rgoal"></div>
+        <div class="users" id="gk" style="position:absolute; left:1.5vw; top:32vh;">
+            <div class="uhead"></div>
+            <div class="user"></div>
+        </div>
+        <div class="users" id="lb" style="position:absolute; left:15vw; top:7vh;">
+            <div class="uhead"></div>
+            <div class="user"></div>
+        </div>
+        <div class="users" id="lcb" style="position:absolute; left:15vw; top:22vh;">
+            <div class="uhead"></div>
+            <div class="user"></div>
+        </div>
+        <div class="users" id="rcb" style="position:absolute; left:15vw; top:38vh;">
+            <div class="uhead"></div>
+            <div class="user"></div>
+        </div>
+        <div class="users" id="rb" style="position:absolute; left:15vw; top:53vh;">
+            <div class="uhead"></div>
+            <div class="user"></div>
+        </div>
+        <div class="users" id="lw" style="position:absolute; left:45vw; top:7vh;">
+            <div class="uhead"></div>
+            <div class="user"></div>
+        </div>
+        <div class="users" id="rw" style="position:absolute; left:45vw; top:53vh;">
+            <div class="uhead"></div>
+            <div class="user"></div>
+        </div>
+        <div class="users" id="cf" style="position:absolute; left:43vw; top:30vh;">
+            <div class="uhead"></div>
+            <div class="user"></div>
+        </div>
+        <div class="users" id="lcm" style="position:absolute; left:32vw; top:7vh;">
+            <div class="uhead"></div>
+            <div class="user"></div>
+        </div>
+        <div class="users" id="cdm" style="position:absolute; left:26vw; top:30vh;">
+            <div class="uhead"></div>
+            <div class="user"></div>
+        </div>
+        <div class="users" id="rcm" style="position:absolute; left:32vw; top:53vh;">
+            <div class="uhead"></div>
+            <div class="user"></div>
+        </div>
+        <div id="ball">
+            <div class="dot" style="left: calc(50% - 0.5vw)"></div>
+            <div class="dot" style="top: calc(50% - 1.45vw); left:calc(50% - 0.5vw) "></div>
+            <div class="dot" style="top: calc(50% - 2.4vw); right:0.05vw "></div>
+            <div class="dot" style="bottom:1.9vw; left:calc(50% + 0.6vw) "></div>
+            <div class="dot" style="top: calc(50% - 3.3vw); left:calc(50% - 0.5vw) "></div>
+
+        </div>
+    </div>
+
+
+    <div id="bull">
+        <h2>Live Feedback</h2>
+        <ul id="listy" style="width:24vw; overflow: auto;">
+            <li></li>
+        </ul>
+    </div>
+
+    <a href="half.html" id="lin">
+        <div id="skippy">Skip to half time</div>
+    </a>
+
+    <script>
+
+        fetch('./ManCity_Arsenal_events.json')
+            .then(response => response.json())
+            .then(data => {
+                // use the parsed data here
+                let i = 4;
+                var cposs = 0;
+                var aposs = 0;
+                var mplays = [];
+                var j = 0;
+                var looper1 = true;
+                var looper2 = true;
+                var looper3 = true;
+                var looper4 = true;
+                var looper5 = true;
+                async function animateBall() {
+                    while (i < data.length) {
+                        const typ = data[i]['type']['name'];
+                        if (typ === "Half End") {
+                            break;
+                        }
+                        const lo = data[i]['location'];
+                        console.log(lo.typeOf);
+                        console.log(i);
+                        var x = 0;
+                        var y = 0;
+                        var ax = 0;
+                        var ay = 0;
+                        try {
+                            x = lo[0];
+                            y = lo[1];
+                            ax = ((x / 120) * 65) + 3;
+                            ay = ((y / 80) * 75) + 21;
+                        }
+                        catch {
+                            console.log("no location")
+                        }
+                        const ball = document.getElementById("ball");
+                        const po = data[i]['possession_team']['name']
+                        if (po === 'Manchester City WFC') {
+                            cposs++;
+                        }
+                        else {
+                            aposs++;
+                        }
+
+                        if ((typ === 'Pass' || typ === 'Carry' || typ === 'Interception' || typ === 'Shot') && data[i]['possession_team']['name'] === "Manchester City WFC") {
+                            if (j == 30) {
+                                j = 0;
+                                mplays[j] = data[i]['player']['name'];
+                                console.log(mplays[j]);
+                                j++;
+                            }
+                            else {
+                                mplays[j] = data[i]['player']['name'];
+                                j++;
+                            }
+                        }
+                        await ball.animate(
+                            { top: ay + 'vh', left: ax + 'vw' },
+                            { duration: 1000, fill: 'forwards' }
+                        ).finished;
+                        i++;
+                        var looper1 = true;
+                        var looper2 = true;
+                        var looper3 = true;
+                        var looper4 = true;
+                        var looper5 = true;
+                        if (i > 50) {
+                            if (!(mplays.includes("Chloe Kelly")) && looper1) {
+                                var lily = document.createElement("li");
+                                lily.innerText = "Chloe Kelly is becoming isolated from the game, we need to try and involve her"
+                                var ulily = document.getElementById("listy");
+                                var firs = ulily.firstChild;
+                                ulily.insertBefore(lily, firs);
+                                looper1 = false;
+                            }
+                            if (!(mplays.includes("Khadija Monifa Shaw")) && looper2) {
+                                var lily = document.createElement("li");
+                                lily.innerText = "Khadija Monifa Shaw is becoming isolated from the game, we need to try and involve her"
+                                var ulily = document.getElementById("listy");
+                                var firs = ulily.firstChild;
+                                ulily.insertBefore(lily, firs);
+                                looper2 = false;
+                            }
+                            if (!(mplays.includes("Lauren Hemp")) && looper3) {
+                                var lily = document.createElement("li");
+                                lily.innerText = "Lauren Hemp is becoming isolated from the game, we need to try and involve her"
+                                var ulily = document.getElementById("listy");
+                                var firs = ulily.firstChild;
+                                ulily.insertBefore(lily, firs);
+                                looper3 = false;
+                            }
+                            if (!(mplays.includes("Laura Coombs")) && looper4) {
+                                var lily = document.createElement("li");
+                                lily.innerText = "Laura Coombs is becoming isolated from the game, we need to try and involve her"
+                                var ulily = document.getElementById("listy");
+                                var firs = ulily.firstChild;
+                                ulily.insertBefore(lily, firs);
+                                looper4 = false;
+                            }
+                            /* if (!(mplays.includes("Ingrid Filippa Angeldal"))) {
+                                var lily = document.createElement("li");
+                                lily.innerText = "Ingrid Filippa Angeldal is becoming isolated from the game, we need to try and involve her"
+                                var ulily = document.getElementById("listy");
+                                var firs = ulily.firstChild;
+                                ulily.insertBefore(lily, firs);
+                            }
+                            if (!(mplays.includes("Yui Hasegawa"))) {
+                                var lily = document.createElement("li");
+                                lily.innerText = "Yui Hasegawa is becoming isolated from the game, we need to try and involve her"
+                                var ulily = document.getElementById("listy");
+                                var firs = ulily.firstChild;
+                                ulily.insertBefore(lily, firs);
+                            } */
+                        }
+                        var am = 30;
+                        var tposs = aposs + cposs;
+                        var ratio = aposs / tposs;
+                        if (i == am) {
+                            if (ratio > 0.60) {
+                                var lily = document.createElement("li");
+                                lily.innerText = "We need to look to gain a bit more possession in the middle of the park"
+                                var ulily = document.getElementById("listy");
+                                var firs = ulily.firstChild;
+                                ulily.insertBefore(lily, firs);
+                            }
+                        }
+                    }
+                }
+
+                animateBall();
+
+            });
+
+
+    </script>
+</body>
+
+</html>
